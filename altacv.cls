@@ -93,7 +93,18 @@
 
 \newcommand{\personalinfo}[1]{\def\@personalinfo{#1}}
 
+\definecolor{myblue}{RGB}{0,100,200}
+
 \newcommand{\makecvheader}{%
+  \begin{tcolorbox}[size=normal,oversize,
+  sharp corners,
+  colback=myblue,
+  colframe=myblue,
+  left=\Gm@lmargin,
+  right=\Gm@rmargin,
+  bottom=4pt,
+  top=\Gm@lmargin,%% TODO: hack: using left margin for top
+  fontupper=\Huge]
   \begingroup
     \ifdef{\@photodiameter}{
     \begin{minipage}{\@photodiameter}
@@ -115,6 +126,7 @@
     \ifdef{\@photodiameter}{%
     \end{minipage}\par}{}%
   \endgroup\medskip
+  \end{tcolorbox}
 }
 
 \renewenvironment{quote}{\color{accent}\itshape\large}{\par}
