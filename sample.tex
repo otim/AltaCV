@@ -37,7 +37,7 @@
 
 
 % Change the page layout if you need to
-\geometry{left=1cm,right=9cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=0.0cm,bottom=1.25cm}
+\geometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
 
 % Change the font if you want to.
 
@@ -45,6 +45,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[default]{lato}
+\tcbuselibrary{breakable}
 
 % If using xelatex or lualatex:
 % \setmainfont{Lato}
@@ -84,80 +85,14 @@
   %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
 %   \orcid{orcid.org/0000-0000-0000-0000}
 }
-
-%% Make the header extend all the way to the right, if you want.
-\begin{fullwidth}
-\makecvheader
-\end{fullwidth}
-
-%% Provide the file name containing the sidebar contents as an optional parameter to \cvsection.
-%% You can always just use \marginpar{...} if you do
-%% not need to align the top of the contents to any
-%% \cvsection title in the "main" bar.
-\cvsection[sample-p1sidebar]{Experience}
-
-\cvevent{Job Title 1}{Company 1}{Month 20XX -- Ongoing}{Location}
-\begin{itemize}
-\item Job description 1
-\item Job description 2
-\end{itemize}
-
-\divider
-
-\cvevent{Job Title 2}{Company 2}{Month 20XX -- Ongoing}{Location}
-\begin{itemize}
-\item Job description 1
-\item Job description 2
-\end{itemize}
-
-\cvsection{Projects}
-
-\cvevent{Project 1}{Funding agency/institution}{}{}
-\begin{itemize}
-\item Details
-\end{itemize}
-
-\divider
-
-\cvevent{Project 2}{Funding agency/institution}{Project duration}{}
-A short abstract would also work.
-
-\medskip
-
-\cvsection{A Day of My Life}
-
-% Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
-% \wheelchart{outer radius}{inner radius}{
-% comma-separated list of value/text width/color/detail}
-\wheelchart{1.5cm}{0.5cm}{%
-  6/8em/accent!30/{Sleep,\\beautiful sleep},
-  3/8em/accent!40/Hopeful novelist by night,
-  8/8em/accent!60/Daytime job,
-  2/10em/accent/Sports and relaxation,
-  5/6em/accent!20/Spending time with family
-}
-
-\clearpage
-\cvsection[page2sidebar]{Publications}
-
-\nocite{*}
-
-\printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
-
-\divider
-
-\printbibliography[heading=pubtype,title={\printinfo{\faFileTextO}{Journal Articles}},type=article]
-
-\divider
-
-\printbibliography[heading=pubtype,title={\printinfo{\faGroup}{Conference Proceedings}},type=inproceedings]
-
+\makesidebar{sample-p1sidebar}
+\makemainbar{sample-p1mainbar}
+\makesidebar{page2sidebar}
+\makemainbar{sample-p2mainbar}
 %% If the NEXT page doesn't start with a \cvsection but you'd
 %% still like to add a sidebar, then use this command on THIS
 %% page to add it. The optional argument lets you pull up the
 %% sidebar a bit so that it looks aligned with the top of the
 %% main column.
 % \addnextpagesidebar[-1ex]{page3sidebar}
-
-
 \end{document}

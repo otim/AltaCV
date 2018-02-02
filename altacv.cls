@@ -94,32 +94,37 @@
 \newcommand{\personalinfo}[1]{\def\@personalinfo{#1}}
 
 \definecolor{myblue}{RGB}{0,100,200}
+\definecolor{mygray}{RGB}{200,200,200}
+\definecolor{mywhite}{RGB}{255,255,255}
+
+\newcommand{\makesidebar}[1]{
+\begin{minipage}{0.45\pagewidth}
+  \begingroup
+  \begin{tcolorbox}[height fill,size=minimal,%oversize
+    sharp corners,%
+    colback=mygray,%
+    colframe=mygray,%
+    width=\dimexpr 0.45\pagewidth \relax,%
+    boxsep=1cm]
+  \ifdef{\@photodiameter}{
+  \begin{center}
+  \begin{minipage}{\@photodiameter}{}
+  \if@normalphoto
+    \includegraphics[width=\linewidth]{\@photo}
+  \else
+    \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+  \fi
+  \end{minipage}
+  \end{center}
+  }{}
+  \input{#1}
+  \end{tcolorbox}
+  \endgroup
+\end{minipage}
+}
 
 \newcommand{\makecvheader}{%
-  \begin{tcolorbox}[size=tight,oversize,
-  sharp corners,
-  colback=myblue,
-  colframe=myblue,
-  left=\Gm@lmargin,
-  right=\Gm@rmargin,
-  bottom=\dimexpr -\@photodiameter/2 \relax,
-  top=0cm,
-  fontupper=\Huge]
   \begingroup
-    \ifdef{\@photodiameter}{
-    \begin{tabular}{p{\@photodiameter}p{\dimexpr\textwidth-\@photodiameter}}
-    \multirow{2}{*}{
-    \begin{minipage}{\@photodiameter}{}
-    \rule{0pt}{\dimexpr \@photodiameter/2 \relax}
-    \if@normalphoto
-      \includegraphics[width=\linewidth]{\@photo}
-    \else
-      \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
-    \fi
-    \end{minipage}
-    }
-    &
-    \begin{minipage}{\dimexpr\textwidth-\@photodiameter}}{}%
     \begin{tabular}{b{0.6\linewidth}|b{0.4\linewidth}}
     \raggedleft\color{emphasis}%
     {\Huge\bfseries\MakeUppercase{\@name}\par}
@@ -127,15 +132,23 @@
     &
     \footnotesize\bfseries\@personalinfo
     \end{tabular}
-    \end{minipage}
-    \\
-    &
-    \ifdef{\@photodiameter}{%
-    \rule{0pt}{\dimexpr \@photodiameter/2 \relax}
-    }{}%
-    \end{tabular}
-  \endgroup\medskip
+  \endgroup\par
+}
+
+\newcommand{\makemainbar}[1]{%
+  \begingroup
+  \begin{minipage}{0.54\pagewidth}
+  \begin{tcolorbox}[height fill,size=minimal,%
+    sharp corners,%
+    colback=mywhite,%
+    colframe=mywhite,%
+    width=\dimexpr 0.54\pagewidth \relax,%
+    boxsep=1cm]%
+  \makecvheader
+  \input{#1}
   \end{tcolorbox}
+  \end{minipage}
+  \endgroup
 }
 
 \renewenvironment{quote}{\color{accent}\itshape\large}{\par}
