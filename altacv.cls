@@ -127,7 +127,7 @@
   \begingroup
     \begin{tabular}{b{0.6\linewidth}|b{0.4\linewidth}}
     \raggedleft\color{emphasis}%
-    {\Huge\bfseries\MakeUppercase{\@name}\par}
+    {\LARGE\bfseries\MakeUppercase{\@name}\par}
     {\large\bfseries\color{accent}\@tagline}
     &
     \footnotesize\bfseries\@personalinfo
@@ -145,6 +145,7 @@
     width=\dimexpr 0.54\pagewidth \relax,%
     boxsep=1cm]%
   \makecvheader
+  \medskip
   \input{#1}
   \end{tcolorbox}
   \end{minipage}
@@ -156,8 +157,9 @@
 \newcommand{\cvsection}[2][]{%
   \bigskip%
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\color{heading}\LARGE\bfseries\MakeUppercase{#2}}\\[-1ex]%
-  {\color{heading}\rule{\linewidth}{2pt}\par}\medskip
+  {\color{heading}\rule{\linewidth}{1pt}\par}\smallskip
+  {\color{heading}\large\bfseries\MakeUppercase{#2}}\\[-1ex]%
+  {\color{heading}\rule{\linewidth}{1pt}\par}\medskip
 }
 
 \newcommand{\cvsubsection}[1]{%
