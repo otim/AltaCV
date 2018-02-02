@@ -96,35 +96,44 @@
 \definecolor{myblue}{RGB}{0,100,200}
 
 \newcommand{\makecvheader}{%
-  \begin{tcolorbox}[size=normal,oversize,
+  \begin{tcolorbox}[size=tight,oversize,
   sharp corners,
   colback=myblue,
   colframe=myblue,
   left=\Gm@lmargin,
   right=\Gm@rmargin,
-  bottom=4pt,
-  top=\Gm@lmargin,%% TODO: hack: using left margin for top
+  bottom=\dimexpr -\@photodiameter/2 \relax,
+  top=0cm,
   fontupper=\Huge]
   \begingroup
     \ifdef{\@photodiameter}{
-    \begin{minipage}{\@photodiameter}
+    \begin{tabular}{p{\@photodiameter}p{\dimexpr\textwidth-\@photodiameter}}
+    \multirow{2}{*}{
+    \begin{minipage}{\@photodiameter}{}
+    \rule{0pt}{\dimexpr \@photodiameter/2 \relax}
     \if@normalphoto
       \includegraphics[width=\linewidth]{\@photo}
     \else
       \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
-    \fi%
-    \end{minipage}\hfill%
-    \begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}}{}%
+    \fi
+    \end{minipage}
+    }
+    &
+    \begin{minipage}{\dimexpr\textwidth-\@photodiameter}}{}%
     \begin{tabular}{b{0.6\linewidth}|b{0.4\linewidth}}
     \raggedleft\color{emphasis}%
     {\Huge\bfseries\MakeUppercase{\@name}\par}
-    \medskip
     {\large\bfseries\color{accent}\@tagline}
     &
     \footnotesize\bfseries\@personalinfo
     \end{tabular}
+    \end{minipage}
+    \\
+    &
     \ifdef{\@photodiameter}{%
-    \end{minipage}\par}{}%
+    \rule{0pt}{\dimexpr \@photodiameter/2 \relax}
+    }{}%
+    \end{tabular}
   \endgroup\medskip
   \end{tcolorbox}
 }
