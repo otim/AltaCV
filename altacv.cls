@@ -154,12 +154,16 @@
 
 \renewenvironment{quote}{\color{accent}\itshape\large}{\par}
 
-\newcommand{\cvsection}[2][]{%
-  \bigskip%
-  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\color{heading}\rule{\linewidth}{1pt}\par}\smallskip
-  {\color{heading}\large\bfseries\MakeUppercase{#2}}\\[-1ex]%
-  {\color{heading}\rule{\linewidth}{1pt}\par}\medskip
+\newcommand{\cvsection}[2]{%
+  \bigskip
+  {\tabulinesep=1.2mm
+  \begin{tabu} to \linewidth {m{2em}X[l,m]}
+  \arrayrulecolor{heading}\cline{2-2}
+  \Large\color{heading}#1
+  & \color{heading}\Large\bfseries\MakeUppercase{#2}
+  \\\cline{2-2}
+  \end{tabu}}%
+  \medskip
 }
 
 \newcommand{\cvsubsection}[1]{%
