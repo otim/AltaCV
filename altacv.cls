@@ -47,7 +47,7 @@
 \newcommand{\ratingmarker}{\faCircle}
 
 \RequirePackage{tikz}
-\usetikzlibrary{arrows}
+\usetikzlibrary{arrows,arrows.meta}
 \RequirePackage[skins]{tcolorbox}
 \RequirePackage{enumitem}
 \setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.25\baselineskip,after=\vskip0.25\baselineskip}
@@ -106,17 +106,20 @@
     colframe=mygray,%
     width=\dimexpr 0.45\pagewidth \relax,%
     boxsep=1cm]
-  \ifdef{\@photodiameter}{
-  \begin{center}
-  \begin{minipage}{\@photodiameter}{}
-  \if@normalphoto
-    \includegraphics[width=\linewidth]{\@photo}
-  \else
-    \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
-  \fi
-  \end{minipage}
-  \end{center}
-  }{}
+  \label{#1}
+  \ifnum\getpagerefnumber{#1}=1% Only insert the image on the first page.
+    \ifdef{\@photodiameter}{
+    \begin{center}
+    \begin{minipage}{\@photodiameter}{}
+    \if@normalphoto
+      \includegraphics[width=\linewidth]{\@photo}
+    \else
+      \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+    \fi
+    \end{minipage}
+    \end{center}
+    }{}
+  \else\fi
   \input{#1}
   \end{tcolorbox}
   \endgroup
@@ -144,8 +147,11 @@
     colframe=mywhite,%
     width=\dimexpr 0.54\pagewidth \relax,%
     boxsep=1cm]%
-  \makecvheader
-  \medskip
+  \label{#1}
+  \ifnum\getpagerefnumber{#1}=1% Only insert the header on the first page.
+    \makecvheader%
+    \medskip
+  \else\fi
   \input{#1}
   \end{tcolorbox}
   \end{minipage}
@@ -157,7 +163,7 @@
 \newcommand{\cvsection}[2]{%
   \bigskip
   {\tabulinesep=1.2mm
-  \begin{tabu} to \linewidth {m{2em}X[l,m]}
+  \begin{tabu} to \linewidth {X[1,c,m]X[12,l,m]}
   \arrayrulecolor{heading}\cline{2-2}
   \Large\color{heading}#1
   & \color{heading}\Large\bfseries\MakeUppercase{#2}
@@ -173,11 +179,32 @@
 
 \newenvironment{cvsectionindent}{
   \tabulinesep=1.2mm
-  \begin{tabu} to \linewidth {m{2em}X[l,m]}
+  \begin{tabu} to \linewidth {X[1,c,m]X[12,l,m]}
   &
 }
 {
   \end{tabu}
+}
+
+\newcommand\tikzmark[1]{\tikz[remember picture,overlay] \coordinate (#1);}
+\newenvironment{cvsectiontimeline}{
+  \tabulinesep=1.2mm
+  \begin{tabu} to \linewidth {X[1,c,m]X[12,l,m]}
+  \tikzmark{a} & \\
+}
+{
+  \end{tabu}
+  \tikz[remember picture,overlay]{\draw [-{Latex[length=3mm]}] ([yshift=-2.5ex]b) -- ([yshift=-1ex]a);}
+}
+
+\newcommand{\cvsectiontimelineitem}[4]{% This is similar to cvevent but intended to be used in the cvtimeline environment
+  \tikzmark{b} & \\
+  \faCircle & {\large\color{emphasis}#1} \\
+  &
+  \textbf{\color{accent}#2}\par
+  \smallskip
+  {\small\makebox[0.5\linewidth][l]{\faCalendar \hspace{0.5em}#3}%
+  \ifstrequal{#4}{}{}{\makebox[0.5\linewidth][l]{\faMapMarker\hspace{0.5em}#4}}} \\
 }
 
 \newcommand{\cvevent}[4]{%

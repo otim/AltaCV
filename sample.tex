@@ -48,6 +48,7 @@
 \tcbuselibrary{breakable}
 \usepackage{colortbl}
 \usepackage{tabu}
+\usepackage{refcount}
 
 % If using xelatex or lualatex:
 % \setmainfont{Lato}
@@ -69,7 +70,6 @@
 %% sample.bib contains your publications
 \addbibresource{sample.bib}
 
-\begin{document}
 \name{Your Name Here}
 \tagline{Your Position or Tagline Here}
 \photo{2.8cm}{Globe_High}
@@ -87,6 +87,7 @@
   %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
 %   \orcid{orcid.org/0000-0000-0000-0000}
 }
+\begin{document}
 \makesidebar{sample-p1sidebar}
 \makemainbar{sample-p1mainbar}
 \makesidebar{page2sidebar}
