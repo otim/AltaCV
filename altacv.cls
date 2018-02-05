@@ -60,7 +60,7 @@
 % \RequirePackage{marginfix}
 
 \setlength{\parindent}{0pt}
-\newcommand{\divider}{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip}
+\newcommand{\divider}{\textcolor{body!20}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip}
 
 \newenvironment{fullwidth}{%
   \begin{adjustwidth}{}{\dimexpr-\marginparwidth-\marginparsep\relax}}
@@ -127,10 +127,10 @@
   \begingroup
     \begin{tabular}{b{0.6\linewidth}|b{0.4\linewidth}}
     \raggedleft\color{emphasis}%
-    {\LARGE\bfseries\MakeUppercase{\@name}\par}
-    {\large\bfseries\color{accent}\@tagline}
+    {\LARGE\fontseries{l}\selectfont\MakeUppercase{\@name}\par}
+    {\large\fontseries{l}\selectfont\color{accent}\@tagline}
     &
-    \footnotesize\bfseries\@personalinfo
+    \footnotesize\@personalinfo
     \end{tabular}
   \endgroup\par
 }
@@ -171,6 +171,15 @@
   {\color{emphasis}\large\bfseries{#1}\par}\medskip
 }
 
+\newenvironment{cvsectionindent}{
+  \tabulinesep=1.2mm
+  \begin{tabu} to \linewidth {m{2em}X[l,m]}
+  &
+}
+{
+  \end{tabu}
+}
+
 \newcommand{\cvevent}[4]{%
   {\large\color{emphasis}#1\par}
   \smallskip
@@ -190,13 +199,13 @@
 }
 
 \newcommand{\cvtag}[1]{%
-  \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex]{#1};
+  \tikz[baseline]\node[anchor=base,draw=body!20,rounded corners,inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex]{#1};
 }
 
 \newcommand{\cvskill}[2]{%
 \textcolor{emphasis}{\textbf{#1}}\hfill
 \foreach \x in {1,...,5}{%
-  \space{\ifnumgreater{\x}{#2}{\color{body!30}}{\color{accent}}\faCircle}}\par%
+  \space{\ifnumgreater{\x}{#2}{\color{body!20}}{\color{accent}}\faCircle}}\par%
 }
 
 % Adapted from @Jake's answer at http://tex.stackexchange.com/a/82729/226
