@@ -130,7 +130,7 @@
   \begingroup
     \begin{tabular}{b{0.55\linewidth}|b{0.45\linewidth}}
     \raggedleft\color{emphasis}%
-    {\LARGE\fontseries{l}\selectfont\MakeUppercase{\@name}\par}
+    {\LARGE\bfseries\MakeUppercase{\@name}\par}
     {\large\fontseries{l}\selectfont\color{accent}\@tagline}
     &
     \footnotesize\@personalinfo
