@@ -76,7 +76,7 @@
 \newcommand{\orcidsymbol}{\aiOrcid}
 \newcommand{\mailsymbol}{\faEnvelope}
 
-\newcommand{\printinfo}[2]{\mbox{\textcolor{accent}{#1}\hspace{0.5em}#2\hspace{2em}}}
+\newcommand{\printinfo}[2]{\mbox{\textcolor{accent}{#1}\hspace{0.5em}#2}}
 
 \newcommand{\name}[1]{\def\@name{#1}}
 \newcommand{\tagline}[1]{\def\@tagline{#1}}
@@ -98,13 +98,13 @@
 \definecolor{mywhite}{RGB}{255,255,255}
 
 \newcommand{\makesidebar}[1]{
-\begin{minipage}{0.45\pagewidth}
+\begin{minipage}{0.4\pagewidth}
   \begingroup
   \begin{tcolorbox}[height fill,size=minimal,%oversize
     sharp corners,%
     colback=mygray,%
     colframe=mygray,%
-    width=\dimexpr 0.45\pagewidth \relax,%
+    width=\dimexpr 0.4\pagewidth \relax,%
     boxsep=1cm]
   \label{#1}
   \ifnum\getpagerefnumber{#1}=1% Only insert the image on the first page.
@@ -128,7 +128,7 @@
 
 \newcommand{\makecvheader}{%
   \begingroup
-    \begin{tabular}{b{0.6\linewidth}|b{0.4\linewidth}}
+    \begin{tabular}{b{0.55\linewidth}|b{0.45\linewidth}}
     \raggedleft\color{emphasis}%
     {\LARGE\fontseries{l}\selectfont\MakeUppercase{\@name}\par}
     {\large\fontseries{l}\selectfont\color{accent}\@tagline}
@@ -140,12 +140,12 @@
 
 \newcommand{\makemainbar}[1]{%
   \begingroup
-  \begin{minipage}{0.54\pagewidth}
+  \begin{minipage}{0.59\pagewidth}
   \begin{tcolorbox}[height fill,size=minimal,%
     sharp corners,%
     colback=mywhite,%
     colframe=mywhite,%
-    width=\dimexpr 0.54\pagewidth \relax,%
+    width=\dimexpr 0.59\pagewidth \relax,%
     boxsep=1cm]%
   \label{#1}
   \ifnum\getpagerefnumber{#1}=1% Only insert the header on the first page.
@@ -230,7 +230,7 @@
 }
 
 \newcommand{\cvskill}[2]{%
-\textcolor{emphasis}{\textbf{#1}}\hfill
+\textcolor{emphasis}{#1}\hfill
 \foreach \x in {1,...,5}{%
   \space{\ifnumgreater{\x}{#2}{\color{body!20}}{\color{accent}}\faCircle}}\par%
 }
