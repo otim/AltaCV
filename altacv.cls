@@ -98,12 +98,12 @@
 
 \definecolor{myblue}{RGB}{0,100,200}
 \definecolor{mygray}{RGB}{200,200,200}
-\definecolor{mywhite}{RGB}{255,255,255}
 
 \newcommand{\makesidebar}[2]{
 \begin{minipage}{#1\pagewidth}
+  \vskip -1.5mm%should make sure the page is filled from top to bottom
   \begingroup
-  \begin{tcolorbox}[height fill,size=minimal,%oversize
+  \begin{tcolorbox}[height fill=maximum,size=normal,%oversize
     sharp corners,%
     colback=mygray,%
     colframe=mygray,%
@@ -130,6 +130,7 @@
 }
 
 \newcommand{\makecvheader}{%
+  \vskip -1.5mm%should make sure the page is filled from top to bottom
   \begingroup
     \begin{tabu} to \linewidth {X[11,r,b]|X[9,l,b]}
     \raggedleft\color{emphasis}%
@@ -146,8 +147,8 @@
   \begin{minipage}{#1\pagewidth}
   \begin{tcolorbox}[height fill,size=minimal,%
     sharp corners,%
-    colback=mywhite,%
-    colframe=mywhite,%
+    colback=white,%
+    colframe=white,%
     width=\dimexpr #1\pagewidth \relax,%
     boxsep=1cm]%
   \label{#2}
