@@ -49,14 +49,17 @@
 \RequirePackage{tikz}
 \usetikzlibrary{arrows,arrows.meta}
 \RequirePackage[skins]{tcolorbox}
+\tcbuselibrary{breakable}
 \RequirePackage{enumitem}
 \setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.25\baselineskip,after=\vskip0.25\baselineskip}
 \setlist[itemize]{label=\itemmarker}
 \RequirePackage{graphicx}
 \RequirePackage{etoolbox}
 \RequirePackage{dashrule}
-\RequirePackage{multirow,tabularx}
+\RequirePackage{multirow,tabu}
 \RequirePackage{changepage}
+\RequirePackage{colortbl}
+\RequirePackage{refcount}
 % \RequirePackage{marginfix}
 
 \setlength{\parindent}{0pt}
@@ -128,13 +131,13 @@
 
 \newcommand{\makecvheader}{%
   \begingroup
-    \begin{tabular}{b{0.55\linewidth}|b{0.45\linewidth}}
+    \begin{tabu} to \linewidth {X[11,r,b]|X[9,l,b]}
     \raggedleft\color{emphasis}%
     {\LARGE\bfseries\MakeUppercase{\@name}\par}
     {\large\fontseries{l}\selectfont\color{accent}\@tagline}
     &
     \footnotesize\@personalinfo
-    \end{tabular}
+    \end{tabu}
   \endgroup\par
 }
 
@@ -183,7 +186,7 @@
   &
 }
 {
-  \end{tabu}
+  \\ \end{tabu}
 }
 
 \newcommand\tikzmark[1]{\tikz[remember picture,overlay] \coordinate (#1);}
@@ -218,10 +221,11 @@
 }
 
 \newcommand{\cvachievement}[3]{%
-  \begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
-  \multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{#2}\\
-  & #3
-  \end{tabularx}%
+  {\tabulinesep=1.2mm
+  \begin{tabu} to \linewidth {X[1,r,b]X[12,l,b]}
+  \multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{#2} \\
+  & #3 \\
+  \end{tabu}}
   \smallskip
 }
 
