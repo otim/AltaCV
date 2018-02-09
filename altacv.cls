@@ -71,6 +71,7 @@
 
 \newcommand{\emailsymbol}{\faAt}
 \newcommand{\phonesymbol}{\faPhone}
+\newcommand{\skypesymbol}{\faSkype}
 \newcommand{\homepagesymbol}{\faChain}
 \newcommand{\locationsymbol}{\faMapMarker}
 \newcommand{\linkedinsymbol}{\faLinkedin}
@@ -87,6 +88,7 @@
 \newcommand{\email}[1]{\printinfo{\emailsymbol}{#1}}
 \newcommand{\mailaddress}[1]{\printinfo{\mailsymbol}{#1}}
 \newcommand{\phone}[1]{\printinfo{\phonesymbol}{#1}}
+\newcommand{\skype}[1]{\printinfo{\skypesymbol}{#1}}
 \newcommand{\homepage}[1]{\printinfo{\homepagesymbol}{#1}}
 \newcommand{\twitter}[1]{\printinfo{\twittersymbol}{#1}}
 \newcommand{\linkedin}[1]{\printinfo{\linkedinsymbol}{#1}}
