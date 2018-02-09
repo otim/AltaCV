@@ -135,7 +135,7 @@
     \begin{tabu} to \linewidth {X[11,r,b]|X[9,l,b]}
     \raggedleft\color{emphasis}%
     {\LARGE\bfseries\MakeUppercase{\@name}\par}
-    {\large\fontseries{l}\selectfont\color{accent}\@tagline}
+    {\large\itshape\fontseries{l}\selectfont\color{accent}\@tagline}
     &
     \footnotesize\@personalinfo
     \end{tabu}
@@ -203,19 +203,20 @@
 
 \newcommand{\cvsectiontimelineitem}[4]{% This is similar to cvevent but intended to be used in the cvtimeline environment
   \tikzmark{b} & \\
-  \faCircle & {\large\color{emphasis}#1} \\
+  \faCircle & {\color{emphasis}#1} \\
   &
-  \textbf{\color{accent}#2}\par
-  \smallskip
+  {\itshape\fontseries{sb}\selectfont\large\color{emphasis}#2}\par
+  \medskip
   {\small\makebox[0.5\linewidth][l]{\faCalendar \hspace{0.5em}\parbox{0.5\linewidth}{#3}}%
+  \smallskip
   \ifstrequal{#4}{}{}{\makebox[0.5\linewidth][l]{\faMapMarker\hspace{0.5em}\parbox{0.5\linewidth}{#4}}}} \\
 }
 
 \newcommand{\cvevent}[4]{%
-  {\large\color{emphasis}#1\par}
-  \smallskip
-  \textbf{\color{accent}#2}\par
-  \smallskip
+  {\color{emphasis}#1\par}
+  \medskip
+  {\itshape\fontseries{sb}\selectfont\large\color{emphasis}#2}\par
+  \medskip
   {\small\makebox[0.5\linewidth][l]{\faCalendar \hspace{0.5em}\parbox{0.5\linewidth}{#3}}%
   \ifstrequal{#4}{}{}{\makebox[0.5\linewidth][l]{\faMapMarker\hspace{0.5em}\parbox{0.5\linewidth}{#4}}}\par}
   \medskip
