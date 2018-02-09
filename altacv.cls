@@ -136,7 +136,7 @@
   \begingroup
     \begin{tabu} to \linewidth {X[11,r,b]|X[9,l,b]}
     \raggedleft\color{emphasis}%
-    {\LARGE\bfseries\MakeUppercase{\@name}\par}
+    {\LARGE\fontseries{sb}\selectfont\MakeUppercase{\@name}\par}
     {\large\itshape\fontseries{l}\selectfont\color{accent}\@tagline}
     &
     \footnotesize\@personalinfo
