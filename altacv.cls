@@ -100,17 +100,17 @@
 \definecolor{mygray}{RGB}{200,200,200}
 \definecolor{mywhite}{RGB}{255,255,255}
 
-\newcommand{\makesidebar}[1]{
-\begin{minipage}{0.4\pagewidth}
+\newcommand{\makesidebar}[2]{
+\begin{minipage}{#1\pagewidth}
   \begingroup
   \begin{tcolorbox}[height fill,size=minimal,%oversize
     sharp corners,%
     colback=mygray,%
     colframe=mygray,%
-    width=\dimexpr 0.4\pagewidth \relax,%
+    width=\dimexpr #1\pagewidth \relax,%
     boxsep=1cm]
-  \label{#1}
-  \ifnum\getpagerefnumber{#1}=1% Only insert the image on the first page.
+  \label{#2}
+  \ifnum\getpagerefnumber{#2}=1% Only insert the image on the first page.
     \ifdef{\@photodiameter}{
     \begin{center}
     \begin{minipage}{\@photodiameter}{}
@@ -123,7 +123,7 @@
     \end{center}
     }{}
   \else\fi
-  \input{#1}
+  \input{#2}
   \end{tcolorbox}
   \endgroup
 \end{minipage}
@@ -141,21 +141,21 @@
   \endgroup\par
 }
 
-\newcommand{\makemainbar}[1]{%
+\newcommand{\makemainbar}[2]{%
   \begingroup
-  \begin{minipage}{0.59\pagewidth}
+  \begin{minipage}{#1\pagewidth}
   \begin{tcolorbox}[height fill,size=minimal,%
     sharp corners,%
     colback=mywhite,%
     colframe=mywhite,%
-    width=\dimexpr 0.59\pagewidth \relax,%
+    width=\dimexpr #1\pagewidth \relax,%
     boxsep=1cm]%
-  \label{#1}
-  \ifnum\getpagerefnumber{#1}=1% Only insert the header on the first page.
+  \label{#2}
+  \ifnum\getpagerefnumber{#2}=1% Only insert the header on the first page.
     \makecvheader%
     \medskip
   \else\fi
-  \input{#1}
+  \input{#2}
   \end{tcolorbox}
   \end{minipage}
   \endgroup
