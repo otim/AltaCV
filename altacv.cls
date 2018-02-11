@@ -227,7 +227,7 @@
 \newcommand{\cvachievement}[3]{%
   {\tabulinesep=1.2mm
   \begin{tabu} to \linewidth {X[1,r,b]X[12,l,b]}
-  \multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{#2} \\
+  \color{accent}#1 & \bfseries\textcolor{emphasis}{#2} \\
   & #3 \\
   \end{tabu}}
   \smallskip
