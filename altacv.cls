@@ -147,7 +147,7 @@
 \newcommand{\makemainbar}[3]{%
   \begingroup
   \begin{minipage}{#1\pagewidth}
-  \begin{tcolorbox}[height fill,size=minimal,%
+  \begin{tcolorbox}[height fill=maximum,size=normal,%
     sharp corners,%
     colback=white,%
     colframe=white,%
@@ -297,12 +297,14 @@
     \endgroup
 }
 
-\newcommand{\cvref}[3]{%
+\newcommand{\cvref}[4]{%
   \smallskip
   \textcolor{emphasis}{\textbf{#1}}\par
+  \smallskip
   \begin{description}[font=\color{accent},style=multiline,leftmargin=1.25em]
-  \item[\emailsymbol] #2
-  \item[\small\mailsymbol] #3
+  \item[\small\faBriefcase] #2
+  \item[\emailsymbol] #3
+  \ifstrequal{#4}{}{}{\item[\phonesymbol] #4}
   \end{description}
 %   \medskip
 }
