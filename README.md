@@ -20,11 +20,7 @@ This is how the re-created résumé looks like ([view/open on Overleaf](https://
 
 Though if you're creating your own CV/résumé, you'd probably prefer using the basic template ([view/open on Overleaf](https://www.overleaf.com/latex/templates/altacv-template/trgqjpwnmtgv)):
 
-<object data="sample.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="sample.pdf">
-        This browser does not support PDFs. Please download the PDF to view it: <a href="sample.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+<img src="sample.png" alt="sample barebones AltaCV template" width="600px">
 
 
 ## Requirements and Compilation
