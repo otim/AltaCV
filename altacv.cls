@@ -179,8 +179,10 @@
 }
 
 \newcommand{\cvsubsection}[1]{%
-  \smallskip%
-  {\color{emphasis}\large\bfseries{#1}\par}\medskip
+  \medskip
+  \color{heading}\large\bfseries\MakeUppercase{#1}
+  \\\arrayrulecolor{heading}\cline{2-2}%
+  & \medskip
 }
 
 \newenvironment{cvsectionindent}{
@@ -316,7 +318,6 @@
 % \setlength{\bibhang}{1em}
 % \DeclareFieldFormat{labelnumberwidth}{\makebox[\bibhang][l]{\itemmarker}}
 % \setlength{\biblabelsep}{0pt}
-\defbibheading{pubtype}{\cvsubsection{#1}}
 \renewcommand{\bibsetup}{\vspace*{-\baselineskip}}
 \AtEveryBibitem{\makebox[\bibhang][l]{\itemmarker}}
 \setlength{\bibitemsep}{0.25\baselineskip}
