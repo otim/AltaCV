@@ -135,7 +135,7 @@
   \vskip -1.5mm%should make sure the page is filled from top to bottom
   \begingroup
     \begin{tabu} to \linewidth {X[11,r,b]|X[9,l,b]}
-    \raggedleft\color{emphasis}%
+    \color{emphasis}%
     {\LARGE\fontseries{sb}\selectfont\MakeUppercase{\@name}\par}
     {\large\itshape\fontseries{l}\selectfont\color{accent}\@tagline}
     &
@@ -187,7 +187,7 @@
 
 \newenvironment{cvsectionindent}{
   \tabulinesep=1.2mm
-  \begin{tabu} to \linewidth {X[1,c,m]X[12,l,m]}
+  \begin{tabu} to \linewidth {X[1,c,m]X[12,j,m]}
   &
 }
 {
@@ -197,7 +197,7 @@
 \newcommand\tikzmark[1]{\tikz[remember picture,overlay] \coordinate (#1);}
 \newenvironment{cvsectiontimeline}{
   \tabulinesep=1.2mm
-  \begin{tabu} to \linewidth {X[1,c,m]X[12,l,m]}
+  \begin{tabu} to \linewidth {X[1,c,m]X[12,j,m]}
   \tikzmark{a} & \\
 }
 {
@@ -228,7 +228,7 @@
 
 \newcommand{\cvachievement}[3]{%
   {\tabulinesep=1.2mm
-  \begin{tabu} to \linewidth {X[1,r,b]X[12,l,b]}
+  \begin{tabu} to \linewidth {X[1,r,b]X[12,j,b]}
   \color{accent}#1 & \bfseries\textcolor{emphasis}{#2} \\
   & #3 \\
   \end{tabu}}
@@ -311,8 +311,6 @@
 %   \medskip
 }
 
-\newenvironment{cvcolumn}[1]{\begin{minipage}[t]{#1}\raggedright}{\end{minipage}}
-
 \RequirePackage[backend=biber,style=authoryear,sorting=ydnt]{biblatex}
 %% For removing numbering entirely when using a numeric style
 % \setlength{\bibhang}{1em}
@@ -333,5 +331,4 @@
 \AtBeginDocument{%
   \pagestyle{empty}
   \color{body}
-  \raggedright
 }
