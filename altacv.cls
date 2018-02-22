@@ -136,8 +136,8 @@
   \begingroup
     \begin{tabu} to \linewidth {X[11,r,b]|X[9,l,b]}
     \color{emphasis}%
-    {\LARGE\fontseries{sb}\selectfont\MakeUppercase{\@name}}
-    \ifstrequal{\@tagline}{}{}{\large\par\itshape\fontseries{l}\selectfont\color{accent}\@tagline}
+    {\LARGE\fontseries{sb}\selectfont\MakeUppercase{\@name}}%
+    \ifdef{\@tagline}{\large\par\itshape\fontseries{l}\selectfont\color{accent}\@tagline}{}%
     &
     \footnotesize\@personalinfo
     \end{tabu}
